@@ -125,7 +125,7 @@ export default function Process() {
                     className="absolute bottom-0 left-1/2 -translate-x-1/2 z-20 w-[35vw] max-w-[420px] min-w-[220px]"
                 >
                     <img
-                        src="/images/hero-portrait.png"
+                        src="/images/hero-portrait-Photoroom.png"
                         alt="Portrait"
                         className="w-full object-cover object-top grayscale contrast-125"
                         style={{

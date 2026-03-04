@@ -95,7 +95,9 @@ export default function Home() {
         target: heroRef,
         offset: ["start start", "end start"]
     })
-    const heroImgY = useTransform(scrollYProgress, [0, 1], [0, 100])
+    const heroImgY = useTransform(scrollYProgress, [0, 1], [0, 110])
+    const heroTitleY = useTransform(scrollYProgress, [0, 1], [0, -55])
+    const heroTitleOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0])
 
     return (
         <motion.div
@@ -105,63 +107,54 @@ export default function Home() {
             exit="exit"
         >
             {/* Hero Section */}
-            <section ref={heroRef} className="hero-gradient relative min-h-screen flex flex-col justify-center overflow-hidden">
+            <section ref={heroRef} className="hero-gradient relative min-h-screen flex flex-col justify-start overflow-hidden pt-24 md:pt-28">
                 {/* YES! cursor trail effect */}
                 <YesTrail containerRef={heroRef} />
 
-                {/* Hero heading - positioned to fill the viewport */}
-                <div className="relative z-10 w-full px-2 md:px-6" style={{ marginTop: '5vh' }}>
-                    <h1
-                        className="text-dark"
-                        style={{
-                            fontFamily: 'Outfit, sans-serif',
-                            fontWeight: 900,
-                            textTransform: 'uppercase',
-                            letterSpacing: '-0.04em',
-                            lineHeight: 0.92,
-                            fontSize: 'clamp(3rem, 11vw, 13rem)',
-                            transform: 'scaleX(0.85)',
-                            transformOrigin: 'left',
-                        }}
+                <div className="relative w-full px-3 md:px-10 flex min-h-[30vh] md:min-h-[40vh] items-center">
+                    <motion.div
+                        style={{ y: heroTitleY, opacity: heroTitleOpacity }}
+                        className="w-full"
                     >
-                        <span className="flex justify-between w-full" style={{ width: 'calc(100% / 0.85)' }}>
-                            <span>WEBSITES</span>
-                            <span>THAT</span>
-                            <span>MAKE</span>
-                        </span>
-                        <span className="flex items-baseline w-full" style={{ width: 'calc(100% / 0.85)' }}>
-                            <span>CLIENTS</span>
-                            <span className="flex-1" />
-                            <span>SAY</span>
-                            <span className="ml-2 md:ml-4">
-                                <span
-                                    className="font-script text-coral inline-block"
-                                    style={{
-                                        fontFamily: "'Tentang Nanti One', cursive",
-                                        transform: 'rotate(-4deg)',
-                                        fontWeight: 700,
-                                        fontStyle: 'italic',
-                                        fontSize: '0.55em',
-                                        lineHeight: 1,
-                                    }}
-                                >
-                                    "YES!"
+                        <h1 className="heading-ultra text-dark text-[clamp(3rem,11vw,13rem)] w-full">
+                            <span className="flex justify-between" style={{ width: 'calc(100% / 0.88)' }}>
+                                <span>WEBSITES</span>
+                                <span>THAT</span>
+                                <span>MAKE</span>
+                            </span>
+                            <span className="flex items-baseline" style={{ width: 'calc(100% / 0.88)' }}>
+                                <span>CLIENTS</span>
+                                <span className="flex-1" />
+                                <span>SAY</span>
+                                <span className="ml-3 md:ml-5">
+                                    <span
+                                        className="font-script text-coral inline-block"
+                                        style={{
+                                            fontFamily: "'Tentang Nanti One', cursive",
+                                            transform: 'rotate(-6deg)',
+                                            fontStyle: 'italic',
+                                            fontSize: '0.62em',
+                                            lineHeight: 1,
+                                        }}
+                                    >
+                                        "YES!"
+                                    </span>
                                 </span>
                             </span>
-                        </span>
-                    </h1>
+                        </h1>
+                    </motion.div>
                 </div>
 
                 {/* Hero Portrait - absolutely positioned center */}
                 <motion.div
-                    initial={{ y: 80, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
+                    initial={{ y: 80, opacity: 0, x: "-50%" }}
+                    animate={{ y: 0, opacity: 1, x: "-50%" }}
                     transition={{ duration: 1, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
                     style={{ y: heroImgY }}
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 z-20 w-[32vw] max-w-[400px] min-w-[200px]"
+                    className="absolute bottom-0 left-1/2 z-20 w-[36vw] max-w-[440px] min-w-[220px]"
                 >
                     <img
-                        src="/images/hero-portrait.png"
+                        src="/images/hero-portrait-Photoroom.png"
                         alt="Portrait"
                         className="w-full object-cover object-top grayscale contrast-125"
                         style={{

@@ -144,7 +144,7 @@ export default function About() {
                             <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-14 h-5 tape rounded-sm z-20" />
                             <div className="polaroid max-w-[240px] md:max-w-[300px]">
                                 <img
-                                    src="/images/hero-portrait.png"
+                                    src="/images/hero-portrait-Photoroom.png"
                                     alt="Me"
                                     className="w-full aspect-square object-cover"
                                 />

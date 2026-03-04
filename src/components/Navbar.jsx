@@ -28,59 +28,63 @@ export default function Navbar({ onMenuToggle }) {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-5 flex items-center justify-between transition-all duration-500 ${scrolled ? 'py-4' : ''
-                }`}
+            className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-5 transition-all duration-500 ${scrolled ? 'py-4' : ''}`}
             style={{
                 background: scrolled ? 'rgba(242, 237, 228, 0.9)' : 'transparent',
                 backdropFilter: scrolled ? 'blur(16px)' : 'none',
                 WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
             }}
         >
-            {/* Logo - BK monogram */}
-            <Link to="/" className="relative z-50">
-                <span
-                    className="text-[26px] leading-none"
-                    style={{
-                        fontFamily: 'Outfit, sans-serif',
-                        fontWeight: 900,
-                        letterSpacing: '-0.04em',
-                    }}
-                >
-                    BK
-                </span>
-            </Link>
+            <div className="w-full grid grid-cols-2 md:grid-cols-3 items-center">
+                {/* Logo - BK monogram */}
+                <Link to="/" className="relative z-50 justify-self-start">
+                    <span
+                        className="text-[26px] leading-none"
+                        style={{
+                            fontFamily: 'Outfit, sans-serif',
+                            fontWeight: 900,
+                            letterSpacing: '-0.04em',
+                        }}
+                    >
+                        BK
+                    </span>
+                </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-10">
-                <NavLink to="/portfolio" label="Portfolio" />
-                <NavLink to="/process" label="My Process" />
-                <NavLink to="/about" label="About" />
-            </nav>
+                {/* Desktop Nav */}
+                <nav className="hidden md:flex items-center gap-10 justify-self-center">
+                    <NavLink to="/portfolio" label="Portfolio" />
+                    <NavLink to="/process" label="My Process" />
+                    <NavLink to="/about" label="About" />
+                </nav>
 
-            {/* Let's Talk Button */}
-            <Link
-                to="/contact"
-                className="hidden md:flex items-center gap-3 bg-dark text-white px-5 py-3 text-[13px] font-medium tracking-[0.06em] uppercase btn-animate rounded-[4px]"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-            >
-                <img
-                    src="/images/hero-portrait.png"
-                    alt="Profile"
-                    className="w-7 h-7 rounded-[3px] object-cover"
-                />
-                LET'S TALK
-            </Link>
+                {/* Right side */}
+                <div className="justify-self-end flex items-center">
+                    {/* Let's Talk Button */}
+                    <Link
+                        to="/contact"
+                        className="hidden md:flex items-center gap-3 bg-dark text-white px-5 py-3 text-[13px] font-medium tracking-[0.06em] uppercase btn-animate rounded-[4px]"
+                        style={{ fontFamily: 'Inter, sans-serif' }}
+                    >
+                        <img
+                            src="/images/hero-portrait-Photoroom.png"
+                            alt="Profile"
+                            className="w-7 h-7 rounded-[3px] object-cover"
+                        />
+                        LET'S TALK
+                    </Link>
 
-            {/* Mobile Menu Toggle */}
-            <button
-                onClick={onMenuToggle}
-                className="md:hidden relative z-50 flex flex-col gap-1.5 p-2"
-                aria-label="Toggle menu"
-            >
-                <span className="w-6 h-[2px] bg-dark block" />
-                <span className="w-6 h-[2px] bg-dark block" />
-                <span className="w-4 h-[2px] bg-dark block" />
-            </button>
+                    {/* Mobile Menu Toggle */}
+                    <button
+                        onClick={onMenuToggle}
+                        className="md:hidden relative z-50 flex flex-col gap-1.5 p-2"
+                        aria-label="Toggle menu"
+                    >
+                        <span className="w-6 h-[2px] bg-dark block" />
+                        <span className="w-6 h-[2px] bg-dark block" />
+                        <span className="w-4 h-[2px] bg-dark block" />
+                    </button>
+                </div>
+            </div>
         </header>
     )
 }

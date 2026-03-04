@@ -1,5 +1,5 @@
 /* Google Fonts & Custom Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 
 @import "tailwindcss";
 
@@ -21,7 +21,7 @@
   --color-cream: #F5F0E8;
   --color-gold-tape: #D4B96A;
 
-  --font-heading: 'Outfit', sans-serif;
+  --font-heading: 'Bebas Neue', 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-script: 'Tentang Nanti One', cursive;
 }
@@ -102,9 +102,9 @@ body {
   font-family: var(--font-heading);
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: -0.05em;
-  line-height: 0.88;
-  transform: scaleX(0.82);
+  letter-spacing: -0.035em;
+  line-height: 0.84;
+  transform: scaleX(0.88);
   transform-origin: left;
 }
 
@@ -112,9 +112,9 @@ body {
   font-family: var(--font-heading);
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: -0.05em;
-  line-height: 0.88;
-  transform: scaleX(0.82);
+  letter-spacing: -0.035em;
+  line-height: 0.84;
+  transform: scaleX(0.88);
   transform-origin: center;
 }
 
