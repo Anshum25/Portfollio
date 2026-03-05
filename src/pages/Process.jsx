@@ -130,7 +130,7 @@ export default function Process() {
                         className="w-full object-cover object-top grayscale contrast-125"
                         style={{
                             maskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
-                            WebkitMaskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
+                            WeADitMaskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
                         }}
                     />
                 </motion.div>

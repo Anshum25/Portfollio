@@ -55,7 +55,7 @@ body {
   background-color: var(--color-beige);
   color: var(--color-dark);
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  -weADit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: none;
 }
@@ -131,7 +131,7 @@ body {
 }
 
 /* Custom Scrollbar */
-::-webkit-scrollbar {
+::-weADit-scrollbar {
   width: 0px;
 }
 

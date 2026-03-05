@@ -129,7 +129,7 @@ export default function Contact() {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                placeholder="hello@bogdankolomiyets"
+                                placeholder="hello@anshumdev"
                                 required
                                 className="w-full bg-[#E8E3DA] border-none rounded-xl px-5 py-4 text-[15px] outline-none focus:ring-2 focus:ring-coral/30 transition-all placeholder:text-dark/30"
                                 style={{ fontFamily: 'Inter, sans-serif' }}

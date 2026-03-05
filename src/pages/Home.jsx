@@ -107,16 +107,16 @@ export default function Home() {
             exit="exit"
         >
             {/* Hero Section */}
-            <section ref={heroRef} className="hero-gradient relative min-h-screen flex flex-col justify-start overflow-hidden pt-24 md:pt-28">
+            <section ref={heroRef} className="hero-gradient relative min-h-screen flex flex-col justify-start overflow-hidden pt-32 md:pt-36">
                 {/* YES! cursor trail effect */}
                 <YesTrail containerRef={heroRef} />
 
-                <div className="relative w-full px-3 md:px-10 flex min-h-[30vh] md:min-h-[40vh] items-center">
+                <div className="relative w-full px-3 md:px-10 flex min-h-[30vh] md:min-h-[40vh] items-center mt-10 md:mt-16">
                     <motion.div
                         style={{ y: heroTitleY, opacity: heroTitleOpacity }}
                         className="w-full"
                     >
-                        <h1 className="heading-ultra text-dark text-[clamp(3rem,11vw,13rem)] w-full">
+                        <h1 className="heading-ultra text-dark text-[clamp(25rem,11vw,13.5rem)] leading-[0.88] w-full">
                             <span className="flex justify-between" style={{ width: 'calc(100% / 0.88)' }}>
                                 <span>WEBSITES</span>
                                 <span>THAT</span>
@@ -124,21 +124,18 @@ export default function Home() {
                             </span>
                             <span className="flex items-baseline" style={{ width: 'calc(100% / 0.88)' }}>
                                 <span>CLIENTS</span>
-                                <span className="flex-1" />
+                                <span className="flex-1 min-w-[10vw]" />
                                 <span>SAY</span>
-                                <span className="ml-3 md:ml-5">
-                                    <span
-                                        className="font-script text-coral inline-block"
-                                        style={{
-                                            fontFamily: "'Tentang Nanti One', cursive",
-                                            transform: 'rotate(-6deg)',
-                                            fontStyle: 'italic',
-                                            fontSize: '0.62em',
-                                            lineHeight: 1,
-                                        }}
-                                    >
-                                        "YES!"
-                                    </span>
+                                <span className="ml-4 md:ml-8 font-script text-coral inline-block"
+                                    style={{
+                                        fontFamily: "'Tentang Nanti One', cursive",
+                                        transform: 'rotate(-6deg)',
+                                        fontStyle: 'italic',
+                                        fontSize: '0.62em',
+                                        lineHeight: 1,
+                                    }}
+                                >
+                                    "YES!"
                                 </span>
                             </span>
                         </h1>
@@ -151,7 +148,7 @@ export default function Home() {
                     animate={{ y: 0, opacity: 1, x: "-50%" }}
                     transition={{ duration: 1, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
                     style={{ y: heroImgY }}
-                    className="absolute bottom-0 left-1/2 z-20 w-[36vw] max-w-[440px] min-w-[220px]"
+                    className="absolute bottom-0 left-1/2 z-20 w-[42vw] max-w-[520px] min-w-[280px]"
                 >
                     <img
                         src="/images/hero-portrait-Photoroom.png"
@@ -240,7 +237,7 @@ export default function Home() {
                                                 ({project.number})
                                             </span>
                                             {project.isNew && (
-                                                <span className="font-script text-coral text-lg italic mt-1" style={{ fontFamily: "'Tentang Nanti One', cursive" }}>
+                                                <span className="font-script text-coral text-lg italic mt-1 inline-block" style={{ fontFamily: "'Tentang Nanti One', cursive" }}>
                                                     NEW
                                                 </span>
                                             )}
@@ -445,6 +442,6 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-        </motion.div>
+        </motion.div >
     )
 }

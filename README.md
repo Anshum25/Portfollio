@@ -4,7 +4,7 @@
 
 **Websites That Make Clients Say _"YES!"_**
 
-A high-end, meticulously crafted portfolio website inspired by [bogdankolomiyets.com](https://bogdankolomiyets.com) — built with React, GSAP, Framer Motion, and an obsessive attention to detail.
+A high-end, meticulously crafted portfolio website inspired by [anshumdev.com](https://anshumdev.com) — built with React, GSAP, Framer Motion, and an obsessive attention to detail.
 
 [![React](https://img.shields.io/badge/React-19.2-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-7.3-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vite.dev)
@@ -181,6 +181,6 @@ This project is private and not licensed for redistribution.
 
 **Built with ☕ and an unhealthy attention to detail.**
 
-*Inspired by [bogdankolomiyets.com](https://bogdankolomiyets.com)*
+*Inspired by [anshumdev.com](https://anshumdev.com)*
 
 </div>

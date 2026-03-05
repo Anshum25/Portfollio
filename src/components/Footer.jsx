@@ -36,11 +36,11 @@ export default function Footer() {
                     </div>
                     <div className="mt-6">
                         <a
-                            href="mailto:hello@bogdankolomiyets.com?subject=Hey%2C%20Bogdan!%20I%20have%20a%20project%20idea"
+                            href="mailto:hello@anshumdev.com?subject=Hey%2C%20Bogdan!%20I%20have%20a%20project%20idea"
                             className="text-[13px] opacity-40 hover:opacity-80 transition-opacity underline underline-offset-4"
                             style={{ fontFamily: 'Inter, sans-serif' }}
                         >
-                            hello@bogdankolomiyets.com
+                            hello@anshumdev.com
                         </a>
                     </div>
                 </motion.div>
@@ -89,11 +89,11 @@ export default function Footer() {
                     {/* Email + Copyright */}
                     <div className="flex flex-col justify-between gap-4">
                         <a
-                            href="mailto:hello@bogdankolomiyets.com?subject=Hey%2C%20Bogdan!%20I%20have%20a%20project%20idea"
+                            href="mailto:hello@anshumdev.com?subject=Hey%2C%20Bogdan!%20I%20have%20a%20project%20idea"
                             className="text-[13px] opacity-40 hover:opacity-90 transition-opacity"
                             style={{ fontFamily: 'Inter, sans-serif' }}
                         >
-                            hello@bogdankolomiyets.com
+                            hello@anshumdev.com
                         </a>
                         <p className="text-[11px] opacity-25 mt-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
                             © {new Date().getFullYear()} Bogdan Kolomiyets. All rights reserved.

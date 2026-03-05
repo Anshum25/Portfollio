@@ -32,11 +32,11 @@ export default function Navbar({ onMenuToggle }) {
             style={{
                 background: scrolled ? 'rgba(242, 237, 228, 0.9)' : 'transparent',
                 backdropFilter: scrolled ? 'blur(16px)' : 'none',
-                WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
+                WeADitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
             }}
         >
             <div className="w-full grid grid-cols-2 md:grid-cols-3 items-center">
-                {/* Logo - BK monogram */}
+                {/* Logo - AD monogram */}
                 <Link to="/" className="relative z-50 justify-self-start">
                     <span
                         className="text-[26px] leading-none"
@@ -46,7 +46,7 @@ export default function Navbar({ onMenuToggle }) {
                             letterSpacing: '-0.04em',
                         }}
                     >
-                        BK
+                        AD
                     </span>
                 </Link>
 
