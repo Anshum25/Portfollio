@@ -100,12 +100,13 @@ body {
 /* Ultra Condensed Heading Style - mimics Lektorat-CondensedExtrabold */
 .heading-ultra {
   font-family: var(--font-heading);
-  font-weight: 900;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: -0.035em;
-  line-height: 0.84;
+  letter-spacing: -0.055em;
+  /* line-height: 1.30; */
   transform: scaleX(0.88);
   transform-origin: left;
+  margin-top: 40px;
 }
 
 .heading-ultra-center {

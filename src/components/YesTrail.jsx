@@ -6,8 +6,8 @@ export default function YesTrail({ containerRef }) {
 
     const spawnYes = useCallback((x, y, container) => {
         const now = Date.now()
-        // Throttle spawning - spawn every 80ms for good density like original
-        if (now - lastSpawnTime.current < 45) return
+        // Throttle spawning - increase this to spawn fewer elements (slower rate)
+        if (now - lastSpawnTime.current < 100) return
         lastSpawnTime.current = now
 
         const containerRect = container.getBoundingClientRect()
@@ -15,11 +15,11 @@ export default function YesTrail({ containerRef }) {
         const relY = y - containerRect.top
 
         const el = document.createElement('span')
-        el.textContent = 'YES!'
+        el.textContent = 'NO!'
         el.className = 'yes-trail-text'
 
         // Randomize properties for organic feel like the original site
-        const scale = 1.3 + Math.random() * 1.0 // 0.7 to 1.7
+        const scale = 1.3 + Math.random() * 0.10 // 0.7 to 1.7
         const rotation = -30 + Math.random() * 60 // -30 to 30 degrees
         const offsetX = -20 + Math.random() * 40
         const offsetY = -20 + Math.random() * 40
@@ -31,7 +31,7 @@ export default function YesTrail({ containerRef }) {
             font-family: 'Tentang Nanti One', cursive;
             font-weight: 500;
             font-style: italic;
-            font-size: ${36 * scale}px;
+            font-size: ${26 * scale}px;
             color: #E8533E;
             pointer-events: none;
             z-index: 25;
@@ -46,7 +46,7 @@ export default function YesTrail({ containerRef }) {
 
         // Animate: fall down with gravity + fade out
         let startTime = null
-        const duration = 1400 // 1.4 seconds total
+        const duration = 2500 // 1.4 seconds total
 
         const animateFade = (timestamp) => {
             if (!startTime) startTime = timestamp

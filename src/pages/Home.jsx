@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import YesTrail from '../components/YesTrail'
 
 const pageVariants = {
@@ -90,11 +90,72 @@ const portfolioProjects = [
 
 export default function Home() {
     const [openFaq, setOpenFaq] = useState(null)
+    const [hasScrolled, setHasScrolled] = useState(() => typeof window !== 'undefined' ? window.scrollY > 10 : false)
     const heroRef = useRef(null)
     const { scrollYProgress } = useScroll({
         target: heroRef,
         offset: ["start start", "end start"]
     })
+
+    useEffect(() => {
+        // If they refresh and are already scrolled down, just allow scroll
+        if (hasScrolled) {
+            return
+        }
+
+        // Lock scroll initially
+        document.body.style.overflow = 'hidden'
+
+        const unlockScroll = () => {
+            if (!hasScrolled) {
+                setHasScrolled(true)
+                // Wait for the spring animation to mostly finish before unlocking scroll
+                setTimeout(() => {
+                    document.body.style.overflow = ''
+                }, 100)
+            }
+        }
+
+        const handleWheel = (e) => {
+            // Only trigger if they try to scroll down
+            if (e.deltaY > 0) {
+                unlockScroll()
+            }
+        }
+
+        let touchStartY = 0
+        const handleTouchStart = (e) => {
+            touchStartY = e.touches[0].clientY
+        }
+        
+        const handleTouchMove = (e) => {
+            const touchEndY = e.touches[0].clientY
+            // If dragging finger UP, means scrolling DOWN
+            if (touchStartY - touchEndY > 10) {
+                unlockScroll()
+            }
+        }
+
+        const handleKeydown = (e) => {
+            if (['ArrowDown', 'Space', 'PageDown'].includes(e.code)) {
+                unlockScroll()
+            }
+        }
+
+        window.addEventListener('wheel', handleWheel, { passive: false })
+        window.addEventListener('touchstart', handleTouchStart, { passive: false })
+        window.addEventListener('touchmove', handleTouchMove, { passive: false })
+        window.addEventListener('keydown', handleKeydown, { passive: false })
+
+        return () => {
+            document.body.style.overflow = ''
+            window.removeEventListener('wheel', handleWheel)
+            window.removeEventListener('touchstart', handleTouchStart)
+            window.removeEventListener('touchmove', handleTouchMove)
+            window.removeEventListener('keydown', handleKeydown)
+        }
+    }, [hasScrolled])
+
     const heroImgY = useTransform(scrollYProgress, [0, 1], [0, 110])
     const heroTitleY = useTransform(scrollYProgress, [0, 1], [0, -55])
     const heroTitleOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0])
@@ -107,58 +168,57 @@ export default function Home() {
             exit="exit"
         >
             {/* Hero Section */}
-            <section ref={heroRef} className="hero-gradient relative min-h-screen flex flex-col justify-start overflow-hidden pt-32 md:pt-36">
+            <section ref={heroRef} className="hero-gradient relative min-h-screen flex flex-col justify-start overflow-hidden pt-32 md:pt-36 w-full">
                 {/* YES! cursor trail effect */}
                 <YesTrail containerRef={heroRef} />
 
-                <div className="relative w-full px-3 md:px-10 flex min-h-[30vh] md:min-h-[40vh] items-center mt-10 md:mt-16">
+                {/* Secondary Words Scattered (Faded) - Animated Loop */}
+                {/* Secondary Words Scattered (Faded) - Animated Loop */}
+                
+                <div className="relative w-full px-3 md:px-10 flex min-h-[30vh] md:min-h-[50vh] items-center mt-10 md:mt-16 z-10">
                     <motion.div
                         style={{ y: heroTitleY, opacity: heroTitleOpacity }}
-                        className="w-full"
+                        className="w-full h-full flex flex-col justify-center items-center text-center pb-20 md:pb-32"
                     >
-                        <h1 className="heading-ultra text-dark text-[clamp(25rem,11vw,13.5rem)] leading-[0.88] w-full">
-                            <span className="flex justify-between" style={{ width: 'calc(100% / 0.88)' }}>
-                                <span>WEBSITES</span>
-                                <span>THAT</span>
-                                <span>MAKE</span>
-                            </span>
-                            <span className="flex items-baseline" style={{ width: 'calc(100% / 0.88)' }}>
-                                <span>CLIENTS</span>
-                                <span className="flex-1 min-w-[10vw]" />
-                                <span>SAY</span>
-                                <span className="ml-4 md:ml-8 font-script text-coral inline-block"
-                                    style={{
-                                        fontFamily: "'Tentang Nanti One', cursive",
-                                        transform: 'rotate(-6deg)',
-                                        fontStyle: 'italic',
-                                        fontSize: '0.62em',
-                                        lineHeight: 1,
-                                    }}
-                                >
-                                    "YES!"
-                                </span>
-                            </span>
+                        <h1 className="heading-ultra text-dark text-[clamp(17rem,12.5vw,22.5rem)] leading-[0.85] w-full flex flex-col items-center relative gap-0 md:gap-5">
+                            <span>A DEVLOPER THAT MAKES CLIENTS SAY <span className="text-coral" style={{ fontFamily: "'Tentang Nanti One','Palatino Linotype', 'sans-serif'" }}> "YES!"</span></span>
                         </h1>
                     </motion.div>
                 </div>
 
-                {/* Hero Portrait - absolutely positioned center */}
+                {/* Hero Portrait - absolute wrapper handles the parallax Y */}
                 <motion.div
-                    initial={{ y: 80, opacity: 0, x: "-50%" }}
-                    animate={{ y: 0, opacity: 1, x: "-50%" }}
-                    transition={{ duration: 1, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
-                    style={{ y: heroImgY }}
-                    className="absolute bottom-0 left-1/2 z-20 w-[42vw] max-w-[520px] min-w-[280px]"
+                    style={{ y: heroImgY, x: "-50%" }}
+                    className="absolute bottom-0 left-1/2 z-20 w-[55vw] max-w-[700px] min-w-[350px] pointer-events-none"
                 >
-                    <img
-                        src="/images/hero-portrait-Photoroom.png"
-                        alt="Portrait"
-                        className="w-full object-cover object-top grayscale contrast-125"
-                        style={{
-                            maskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
-                            WebkitMaskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
-                        }}
-                    />
+                    {/* The popup animation container */}
+                    <motion.div
+                        initial={{ y: 200, opacity: 0 }}
+                        animate={{ y: hasScrolled ? 0 : 200, opacity: hasScrolled ? 1 : 0 }}
+                        transition={{ duration: 0.8, type: "spring", bounce: 0.2 }}
+                        className="relative"
+                    >
+                        <img
+                            src="/images/hero-portrait-Photoroom.png"
+                            alt="Portrait"
+                            className="w-full object-cover object-top grayscale contrast-125 pointer-events-none"
+                            style={{
+                                maskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
+                                WebkitMaskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
+                            }}
+                        />
+
+                        {/* Speech Bubble: "I'm here!" */}
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 1.5, rotate: -15 }}
+                            animate={{ opacity: hasScrolled ? 1 : 0, scale: hasScrolled ? 1 : 0.5, rotate: hasScrolled ? 10 : -15 }}
+                            transition={{ duration: 0.5, delay: hasScrolled ? 0.7 : 0, type: "spring" }}
+                            className="absolute top-[0%] left-[70%] md:right-[-20%] text-coral text-[12px] md:text-[64px] px-4 py-2 font-bold "
+                            style={{ fontFamily: "'Tentang Nanti One', cursive" }}
+                        >
+                            Hi! I'm Anshum!
+                        </motion.div>
+                    </motion.div>
                 </motion.div>
 
                 {/* Bottom text */}
@@ -199,14 +259,7 @@ export default function Home() {
                         viewport={{ once: true, margin: '-100px' }}
                         transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
                     >
-                        <div className="relative rounded-xl overflow-hidden bg-dark aspect-video flex items-center justify-center">
-                            <div className="absolute inset-0 bg-gradient-to-br from-dark/90 to-dark/60" />
-                            <div className="relative z-10 text-center">
-                                <span className="inline-block text-white/60 text-[13px] tracking-[0.15em] uppercase">
-                                    Coming soon
-                                </span>
-                            </div>
-                        </div>
+                       
                         <div className="flex justify-between items-center mt-4">
                             <p className="text-[13px] opacity-50" style={{ fontFamily: 'Inter, sans-serif' }}>
                                 ↗ Showreel 2025
