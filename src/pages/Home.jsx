@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
 import YesTrail from '../components/YesTrail'
+import PortfolioScroll from '../components/PortfolioScroll'
 
 const pageVariants = {
     initial: { opacity: 0, y: 20 },
@@ -90,85 +91,33 @@ const portfolioProjects = [
 
 export default function Home() {
     const [openFaq, setOpenFaq] = useState(null)
-    const [hasScrolled, setHasScrolled] = useState(() => typeof window !== 'undefined' ? window.scrollY > 10 : false)
     const heroRef = useRef(null)
     const { scrollYProgress } = useScroll({
         target: heroRef,
         offset: ["start start", "end start"]
     })
 
-    useEffect(() => {
-        // If they refresh and are already scrolled down, just allow scroll
-        if (hasScrolled) {
-            return
-        }
-
-        // Lock scroll initially
-        document.body.style.overflow = 'hidden'
-
-        const unlockScroll = () => {
-            if (!hasScrolled) {
-                setHasScrolled(true)
-                // Wait for the spring animation to mostly finish before unlocking scroll
-                setTimeout(() => {
-                    document.body.style.overflow = ''
-                }, 100)
-            }
-        }
-
-        const handleWheel = (e) => {
-            // Only trigger if they try to scroll down
-            if (e.deltaY > 0) {
-                unlockScroll()
-            }
-        }
-
-        let touchStartY = 0
-        const handleTouchStart = (e) => {
-            touchStartY = e.touches[0].clientY
-        }
-        
-        const handleTouchMove = (e) => {
-            const touchEndY = e.touches[0].clientY
-            // If dragging finger UP, means scrolling DOWN
-            if (touchStartY - touchEndY > 10) {
-                unlockScroll()
-            }
-        }
-
-        const handleKeydown = (e) => {
-            if (['ArrowDown', 'Space', 'PageDown'].includes(e.code)) {
-                unlockScroll()
-            }
-        }
-
-        window.addEventListener('wheel', handleWheel, { passive: false })
-        window.addEventListener('touchstart', handleTouchStart, { passive: false })
-        window.addEventListener('touchmove', handleTouchMove, { passive: false })
-        window.addEventListener('keydown', handleKeydown, { passive: false })
-
-        return () => {
-            document.body.style.overflow = ''
-            window.removeEventListener('wheel', handleWheel)
-            window.removeEventListener('touchstart', handleTouchStart)
-            window.removeEventListener('touchmove', handleTouchMove)
-            window.removeEventListener('keydown', handleKeydown)
-        }
-    }, [hasScrolled])
-
     const heroImgY = useTransform(scrollYProgress, [0, 1], [0, 110])
     const heroTitleY = useTransform(scrollYProgress, [0, 1], [0, -55])
     const heroTitleOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0])
 
+    const containerRef = useRef(null)
+
     return (
         <motion.div
+            ref={containerRef}
             variants={pageVariants}
             initial="initial"
             animate="animate"
             exit="exit"
+            onAnimationComplete={() => {
+                if (containerRef.current) {
+                    containerRef.current.style.transform = 'none';
+                }
+            }}
         >
             {/* Hero Section */}
-            <section ref={heroRef} className="hero-gradient relative min-h-screen flex flex-col justify-start overflow-hidden pt-32 md:pt-36 w-full">
+            <section ref={heroRef} className="hero-gradient sticky top-0 z-0 min-h-screen flex flex-col justify-start overflow-hidden pt-32 md:pt-36 w-full">
                 {/* YES! cursor trail effect */}
                 <YesTrail containerRef={heroRef} />
 
@@ -194,7 +143,7 @@ export default function Home() {
                     {/* The popup animation container */}
                     <motion.div
                         initial={{ y: 200, opacity: 0 }}
-                        animate={{ y: hasScrolled ? 0 : 200, opacity: hasScrolled ? 1 : 0 }}
+                        animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.8, type: "spring", bounce: 0.2 }}
                         className="relative"
                     >
@@ -211,8 +160,8 @@ export default function Home() {
                         {/* Speech Bubble: "I'm here!" */}
                         <motion.div 
                             initial={{ opacity: 0, scale: 1.5, rotate: -15 }}
-                            animate={{ opacity: hasScrolled ? 1 : 0, scale: hasScrolled ? 1 : 0.5, rotate: hasScrolled ? 10 : -15 }}
-                            transition={{ duration: 0.5, delay: hasScrolled ? 0.7 : 0, type: "spring" }}
+                            animate={{ opacity: 1, scale: 1, rotate: 10 }}
+                            transition={{ duration: 0.5, delay: 0.7, type: "spring" }}
                             className="absolute top-[0%] left-[70%] md:right-[-20%] text-coral text-[12px] md:text-[64px] px-4 py-2 font-bold "
                             style={{ fontFamily: "'Tentang Nanti One', cursive" }}
                         >
@@ -232,9 +181,10 @@ export default function Home() {
                 </div>
             </section>
 
+            <div className="relative z-10 bg-beige">
             {/* I BUILD WEBSITES Section */}
-            <section className="py-24 md:py-40 px-6 md:px-10 bg-beige">
-                <div className="max-w-6xl mx-auto">
+            <section className="min-h-screen py-24 md:py-40 px-6 md:px-10 bg-beige flex flex-col justify-center w-full">
+                <div className="max-w-6xl mx-auto w-full">
                     <motion.div
                         initial={{ opacity: 0, y: 60 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -251,8 +201,8 @@ export default function Home() {
             </section>
 
             {/* Video Section - Coming Soon */}
-            <section className="px-6 md:px-10 pb-24 md:pb-40 bg-beige">
-                <div className="max-w-6xl mx-auto">
+            <section className="min-h-screen px-6 md:px-10 pb-24 md:pb-40 bg-beige flex flex-col justify-center w-full">
+                <div className="max-w-6xl mx-auto w-full">
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -269,64 +219,12 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Portfolio Projects - Horizontal Large Cards */}
-            <section className="bg-dark text-white py-24 md:py-32 overflow-hidden">
-                <div className="px-6 md:px-10">
-                    {portfolioProjects.map((project, i) => (
-                        <motion.div
-                            key={project.number}
-                            initial={{ opacity: 0, y: 60 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-100px' }}
-                            transition={{ duration: 0.8, delay: i * 0.1, ease: [0.76, 0, 0.24, 1] }}
-                            className="mb-24 md:mb-32 last:mb-0"
-                        >
-                            <Link to="/portfolio" className="group block">
-                                <div className={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-16 items-center`}>
-                                    {/* Text side */}
-                                    <div className="flex-1 w-full">
-                                        <div className="flex items-start gap-4 mb-6">
-                                            <span className="font-script text-coral text-3xl md:text-4xl italic" style={{ fontFamily: "'Tentang Nanti One', cursive" }}>
-                                                ({project.number})
-                                            </span>
-                                            {project.isNew && (
-                                                <span className="font-script text-coral text-lg italic mt-1 inline-block" style={{ fontFamily: "'Tentang Nanti One', cursive" }}>
-                                                    NEW
-                                                </span>
-                                            )}
-                                        </div>
-                                        <h3 className="heading-ultra text-[clamp(2.5rem,7vw,7rem)] text-white group-hover:text-coral transition-colors duration-500">
-                                            {project.title}
-                                        </h3>
-                                        <p className="text-[15px] opacity-50 mt-6 max-w-md leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-                                            {project.subtitle}
-                                        </p>
-                                        <div className="mt-8">
-                                            <span className="btn-outline btn-outline-white text-[12px]">
-                                                See project
-                                            </span>
-                                        </div>
-                                    </div>
-                                    {/* Image side */}
-                                    <div className="flex-1 w-full">
-                                        <div className="overflow-hidden rounded-lg portfolio-card">
-                                            <img
-                                                src={project.image}
-                                                alt={project.title}
-                                                className="w-full aspect-[4/3] object-cover"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </Link>
-                        </motion.div>
-                    ))}
-                </div>
-            </section>
+            {/* Portfolio Projects - Sticky Scroll Effect */}
+            <PortfolioScroll projects={portfolioProjects} />
 
             {/* Portfolio Thumbnails Preview */}
-            <section className="py-16 md:py-24 px-6 md:px-10 bg-beige">
-                <div className="max-w-7xl mx-auto">
+            <section className="min-h-screen py-16 md:py-24 px-6 md:px-10 bg-beige flex flex-col justify-center w-full">
+                <div className="max-w-7xl mx-auto w-full">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
                         <div className="flex items-end gap-3 md:gap-5 overflow-x-auto pb-2">
                             {portfolioProjects.map((item, i) => (
@@ -370,8 +268,8 @@ export default function Home() {
             </section>
 
             {/* About Preview */}
-            <section className="py-24 md:py-32 px-6 md:px-10 bg-beige">
-                <div className="max-w-5xl mx-auto">
+            <section className="min-h-screen py-24 md:py-32 px-6 md:px-10 bg-beige flex flex-col justify-center w-full">
+                <div className="max-w-5xl mx-auto w-full">
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -398,8 +296,8 @@ export default function Home() {
             </section>
 
             {/* Testimonials */}
-            <section className="py-24 md:py-32 px-6 md:px-10 bg-dark text-white">
-                <div className="max-w-6xl mx-auto">
+            <section className="min-h-screen py-24 md:py-32 px-6 md:px-10 bg-dark text-white flex flex-col justify-center w-full">
+                <div className="max-w-6xl mx-auto w-full">
                     <motion.h2
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -444,8 +342,8 @@ export default function Home() {
             </section>
 
             {/* FAQ Section */}
-            <section className="py-24 md:py-32 px-6 md:px-10 bg-beige">
-                <div className="max-w-5xl mx-auto">
+            <section className="min-h-screen py-24 md:py-32 px-6 md:px-10 bg-beige flex flex-col justify-center w-full">
+                <div className="max-w-5xl mx-auto w-full">
                     <motion.h2
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -495,6 +393,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+            </div>
         </motion.div >
     )
 }

@@ -15,7 +15,7 @@ export default function YesTrail({ containerRef }) {
         const relY = y - containerRect.top
 
         const el = document.createElement('span')
-        el.textContent = 'NO!'
+        el.textContent = 'YES!'
         el.className = 'yes-trail-text'
 
         // Randomize properties for organic feel like the original site

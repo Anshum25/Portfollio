@@ -3,103 +3,78 @@ import { motion } from 'framer-motion'
 
 export default function Footer() {
     return (
-        <footer className="bg-dark text-white">
-            {/* CTA Section */}
-            <section className="py-28 md:py-40 px-6 md:px-10 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
-                >
-                    <h2 className="heading-ultra-center text-[clamp(3rem,10vw,10rem)] mb-6">
-                        Ready to<br />hear more{' '}
-                        <span
-                            className="font-script text-coral"
-                            style={{
-                                fontFamily: "'Tentang Nanti One', cursive",
-                                display: 'inline-block',
-                                fontStyle: 'italic',
-                                fontSize: '0.55em',
-                            }}
-                        >
-                            "yes"?
-                        </span>
-                    </h2>
-                    <div className="mt-10">
-                        <Link
-                            to="/contact"
-                            className="btn-outline btn-outline-white"
-                        >
-                            Hell yes!
-                        </Link>
-                    </div>
-                    <div className="mt-6">
-                        <a
-                            href="mailto:hello@anshumdev.com?subject=Hey%2C%20Bogdan!%20I%20have%20a%20project%20idea"
-                            className="text-[13px] opacity-40 hover:opacity-80 transition-opacity underline underline-offset-4"
-                            style={{ fontFamily: 'Inter, sans-serif' }}
-                        >
-                            hello@anshumdev.com
-                        </a>
-                    </div>
-                </motion.div>
-            </section>
-
-            {/* Footer Bottom */}
-            <div className="border-t border-white/[0.08] px-6 md:px-10 py-12 md:py-16">
-                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-                    {/* Navigation */}
-                    <div>
-                        <nav className="flex flex-col gap-3">
-                            {[
-                                { to: '/', label: 'Home' },
-                                { to: '/portfolio', label: 'Portfolio' },
-                                { to: '/process', label: 'My process' },
-                                { to: '/about', label: 'About' },
-                                { to: '/contact', label: 'Contact' },
-                            ].map((item) => (
-                                <Link
-                                    key={item.to}
-                                    to={item.to}
-                                    className="text-[13px] opacity-40 hover:opacity-90 transition-opacity"
-                                    style={{ fontFamily: 'Inter, sans-serif' }}
-                                >
-                                    {item.label}
-                                </Link>
-                            ))}
-                        </nav>
-                    </div>
-
-                    {/* Social */}
-                    <div>
-                        <nav className="flex flex-col gap-3">
-                            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-[13px] opacity-40 hover:opacity-90 transition-opacity" style={{ fontFamily: 'Inter, sans-serif' }}>
-                                Instagram
-                            </a>
-                            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-[13px] opacity-40 hover:opacity-90 transition-opacity" style={{ fontFamily: 'Inter, sans-serif' }}>
-                                LinkedIn
-                            </a>
-                            <a href="https://dribbble.com" target="_blank" rel="noreferrer" className="text-[13px] opacity-40 hover:opacity-90 transition-opacity" style={{ fontFamily: 'Inter, sans-serif' }}>
-                                Dribbble
-                            </a>
-                        </nav>
-                    </div>
-
-                    {/* Email + Copyright */}
-                    <div className="flex flex-col justify-between gap-4">
-                        <a
-                            href="mailto:hello@anshumdev.com?subject=Hey%2C%20Bogdan!%20I%20have%20a%20project%20idea"
-                            className="text-[13px] opacity-40 hover:opacity-90 transition-opacity"
-                            style={{ fontFamily: 'Inter, sans-serif' }}
-                        >
-                            hello@anshumdev.com
-                        </a>
-                        <p className="text-[11px] opacity-25 mt-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
-                            © {new Date().getFullYear()} Bogdan Kolomiyets. All rights reserved.
-                        </p>
-                    </div>
+        <footer className="relative w-full overflow-hidden bg-gradient-to-b from-[#EAE4DB] to-[#F1553E] text-dark pt-16 md:pt-32 pb-4 border-t border-dark/20">
+            {/* Top Navigation Grid */}
+            <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex flex-col md:flex-row justify-between items-start font-medium" style={{ fontFamily: 'Inter, sans-serif' }}>
+                
+                {/* Column 1: Menu */}
+                <div className="flex gap-4 md:gap-16 w-full md:w-auto">
+                    <span className="text-[11px] md:text-[12px] opacity-100 uppercase mt-1">(MENU)</span>
+                    <nav className="flex flex-col gap-2">
+                        {[
+                            { to: '/', label: 'Home' },
+                            { to: '/portfolio', label: 'Portfolio' },
+                            { to: '/process', label: 'My process' },
+                            { to: '/about', label: 'About' },
+                            { to: '/contact', label: 'Contact' },
+                        ].map((item) => (
+                            <Link
+                                key={item.to}
+                                to={item.to}
+                                className="text-[17px] md:text-[18px] opacity-90 transition-opacity hover:opacity-50"
+                            >
+                                {item.label}
+                            </Link>
+                        ))}
+                    </nav>
                 </div>
+
+                {/* Column 2: Socials */}
+                <div className="flex gap-4 md:gap-16 w-full md:w-auto mt-10 md:mt-0">
+                    <span className="text-[11px] md:text-[12px] opacity-100 uppercase mt-1">(SOCIALS)</span>
+                    <nav className="flex flex-col gap-2">
+                        <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-[17px] md:text-[18px] opacity-90 transition-opacity hover:opacity-50">
+                            Instagram
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-[17px] md:text-[18px] opacity-90 transition-opacity hover:opacity-50">
+                            LinkedIn
+                        </a>
+                        <a href="https://dribbble.com" target="_blank" rel="noreferrer" className="text-[17px] md:text-[18px] opacity-90 transition-opacity hover:opacity-50">
+                            Dribbble
+                        </a>
+                    </nav>
+                </div>
+
+                {/* Column 3: Email */}
+                <div className="flex flex-col items-end w-full md:w-auto mt-10 md:mt-0">
+                    <span className="text-[11px] md:text-[12px] opacity-100 uppercase mb-2">(SAY "HELLO")</span>
+                    <a
+                        href="mailto:hello@anshumdev.com"
+                        className="text-[17px] md:text-[18px] opacity-90 transition-opacity hover:opacity-50"
+                    >
+                        hello@anshumdev.com
+                    </a>
+                </div>
+            </div>
+
+            {/* Huge Name at bottom */}
+            <div className="mt-20 md:mt-32 w-full flex justify-center items-end px-2 md:px-0">
+                <h1 
+                    className="heading-ultra text-dark m-0 p-0 text-center uppercase leading-[0.75] select-none"
+                    style={{ 
+                        fontSize: 'max(3rem, min(14.5vw, 250px))',
+                        transform: 'scaleX(0.85)',
+                        letterSpacing: '-0.035em'
+                    }}
+                >
+                    ANSHUM DEV
+                </h1>
+            </div>
+
+            {/* Very Bottom Banner */}
+            <div className="relative mt-8 md:mt-16 w-full flex justify-between items-center px-4 md:px-10 text-[11px] md:text-[12px] font-medium opacity-70" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <p>©{new Date().getFullYear()} Anshum Dev</p>
+                <p>From India with love ❤️</p>
             </div>
         </footer>
     )
