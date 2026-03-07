@@ -127,11 +127,41 @@ export default function Home() {
                 <div className="relative w-full px-3 md:px-10 flex min-h-[30vh] md:min-h-[50vh] items-center mt-10 md:mt-16 z-10">
                     <motion.div
                         style={{ y: heroTitleY, opacity: heroTitleOpacity }}
-                        className="w-full h-full flex flex-col justify-center items-center text-center pb-20 md:pb-32"
+                        className="w-full h-full flex flex-col justify-center items-center text-center pb-20 md:pb-32 pointer-events-none"
                     >
-                        <h1 className="heading-ultra text-dark text-[clamp(17rem,12.5vw,22.5rem)] leading-[0.85] w-full flex flex-col items-center relative gap-0 md:gap-5">
-                            <span>A DEVLOPER THAT MAKES CLIENTS SAY <span className="text-coral" style={{ fontFamily: "'Tentang Nanti One','Palatino Linotype', 'sans-serif'" }}> "YES!"</span></span>
-                        </h1>
+                        <div className="w-full px-6 md:px-16 pt-16">
+
+  {/* LINE 1 */}
+  <h1 className="heading-ultra text-dark text-[clamp(21rem,26vw,21rem)] leading-[1.15] w-full">
+    <span className="flex justify-between w-full">
+      <span>BUILDING   INTELLIGENT</span>
+      <span></span>
+     
+    </span>
+  </h1>
+
+  {/* LINE 2 */}
+  <div className="w-full flex justify-between items-end mt-2 md:mt-0 relative z-10">
+    <h1 className="heading-ultra text-dark text-[clamp(15rem,12vw,15rem)] leading-[0.85] m-0 p-0 text-left flex flex-col">
+      <span>SYSTEMS THAT</span>
+      <span>SCALE</span>
+    </h1>
+
+    {/* YES */}
+    <span
+      className="text-coral text-[clamp(15rem,14vw,20rem)] absolute md:relative right-[5%] bottom-[20%] md:bottom-[10%]"
+      style={{
+        fontFamily: "'Tentang Nanti One', cursive",
+        transform: "rotate(-8deg)",
+        display: "inline-block",
+        zIndex: 5
+      }}
+    >
+      "YES!"
+    </span>
+  </div>
+
+</div>
                     </motion.div>
                 </div>
 
@@ -162,7 +192,7 @@ export default function Home() {
                             initial={{ opacity: 0, scale: 1.5, rotate: -15 }}
                             animate={{ opacity: 1, scale: 1, rotate: 10 }}
                             transition={{ duration: 0.5, delay: 0.7, type: "spring" }}
-                            className="absolute top-[0%] left-[70%] md:right-[-20%] text-coral text-[12px] md:text-[64px] px-4 py-2 font-bold "
+                            className="absolute top-[20%] left-[70%] md:right-[-20%] text-coral text-[12px] md:text-[64px] px-4 py-2 font-bold "
                             style={{ fontFamily: "'Tentang Nanti One', cursive" }}
                         >
                             Hi! I'm Anshum!

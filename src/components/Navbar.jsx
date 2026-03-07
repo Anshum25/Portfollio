@@ -8,7 +8,7 @@ function NavLink({ to, label }) {
     return (
         <Link
             to={to}
-            className={`nav-link text-[13px] font-medium tracking-[0.08em] uppercase ${isActive ? 'opacity-50' : ''}`}
+            className={`nav-link text-[16px] font-medium tracking-[0.08em] uppercase ${isActive ? 'opacity-50' : ''}`}
             style={{ fontFamily: 'Inter, sans-serif' }}
         >
             <span className="link-text">{label}</span>
@@ -39,7 +39,7 @@ export default function Navbar({ onMenuToggle }) {
                 {/* Logo - AD monogram */}
                 <Link to="/" className="relative z-50 justify-self-start">
                     <span
-                        className="text-[26px] leading-none"
+                        className="text-[56px] leading-none"
                         style={{
                             fontFamily: 'Outfit, sans-serif',
                             fontWeight: 900,
@@ -62,15 +62,11 @@ export default function Navbar({ onMenuToggle }) {
                     {/* Let's Talk Button */}
                     <Link
                         to="/contact"
-                        className="hidden md:flex items-center gap-3 bg-dark text-white px-5 py-3 text-[13px] font-medium tracking-[0.06em] uppercase btn-animate rounded-[4px]"
+                        className="hidden md:flex items-center gap-3 text-dark px-5 py-4 text-[18px] font-medium tracking-[0.08em] uppercase btn-animate rounded-[0px]"
                         style={{ fontFamily: 'Inter, sans-serif' }}
                     >
-                        <img
-                            src="/images/hero-portrait-Photoroom.png"
-                            alt="Profile"
-                            className="w-7 h-7 rounded-[3px] object-cover"
-                        />
-                        LET'S TALK
+
+                        CONTACT
                     </Link>
 
                     {/* Mobile Menu Toggle */}

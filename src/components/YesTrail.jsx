@@ -2,13 +2,20 @@ import { useEffect, useRef, useCallback } from 'react'
 
 export default function YesTrail({ containerRef }) {
     const lastSpawnTime = useRef(0)
+    const lastSpawnPos = useRef({ x: 0, y: 0 })
     const isActive = useRef(false)
 
     const spawnYes = useCallback((x, y, container) => {
         const now = Date.now()
-        // Throttle spawning - increase this to spawn fewer elements (slower rate)
-        if (now - lastSpawnTime.current < 100) return
+        // Throttle spawning by time
+        if (now - lastSpawnTime.current < 40) return
+        
+        // Throttle spawning by distance
+        const dist = Math.hypot(x - lastSpawnPos.current.x, y - lastSpawnPos.current.y)
+        if (dist < 100) return // Adjust this value to require more distance between spawns
+        
         lastSpawnTime.current = now
+        lastSpawnPos.current = { x, y }
 
         const containerRect = container.getBoundingClientRect()
         const relX = x - containerRect.left
@@ -19,7 +26,7 @@ export default function YesTrail({ containerRef }) {
         el.className = 'yes-trail-text'
 
         // Randomize properties for organic feel like the original site
-        const scale = 1.3 + Math.random() * 0.10 // 0.7 to 1.7
+        const scale = 1.3 + Math.random() * 0.90 // 0.7 to 1.7
         const rotation = -30 + Math.random() * 60 // -30 to 30 degrees
         const offsetX = -20 + Math.random() * 40
         const offsetY = -20 + Math.random() * 40
@@ -34,7 +41,7 @@ export default function YesTrail({ containerRef }) {
             font-size: ${26 * scale}px;
             color: #E8533E;
             pointer-events: none;
-            z-index: 25;
+            z-index: 15;
             transform: translate(-50%, -50%) rotate(${rotation}deg);
             opacity: 0.9;
             user-select: none;
