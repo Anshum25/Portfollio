@@ -62,7 +62,7 @@ export default function Navbar({ onMenuToggle }) {
                     {/* Let's Talk Button */}
                     <Link
                         to="/contact"
-                        className="hidden md:flex items-center gap-3 text-dark px-5 py-4 text-[18px] font-medium tracking-[0.08em] uppercase btn-animate rounded-[0px]"
+                        className="hidden md:flex items-center gap-3 text-dark px-5 py-4 text-[16px] font-medium tracking-[0.08em] uppercase btn-animate rounded-[0px]"
                         style={{ fontFamily: 'Inter, sans-serif' }}
                     >
 

@@ -57,7 +57,7 @@ body {
   overflow-x: clip;
   -weADit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none;
+  cursor: auto;
 }
 
 /* Custom cursor */
@@ -74,6 +74,7 @@ body {
   transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
   transform: translate(-50%, -50%);
   mix-blend-mode: difference;
+  display: none !important;
 }
 
 .custom-cursor.hovering {
@@ -95,6 +96,7 @@ body {
   z-index: 10000;
   transform: translate(-50%, -50%);
   mix-blend-mode: difference;
+  display: none !important;
 }
 
 /* Ultra Condensed Heading Style - mimics Lektorat-CondensedExtrabold */
@@ -271,11 +273,11 @@ body {
 /* Smooth link transitions */
 a {
   transition: color 0.3s ease, opacity 0.3s ease;
-  cursor: none;
+  cursor: pointer;
 }
 
 button {
-  cursor: none;
+  cursor: pointer;
 }
 
 /* CTA section */

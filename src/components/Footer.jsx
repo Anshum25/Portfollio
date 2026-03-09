@@ -60,10 +60,10 @@ export default function Footer() {
             {/* Huge Name at bottom */}
             <div className="mt-20 md:mt-32 w-full flex justify-center items-end px-2 md:px-0">
                 <h1 
-                    className="heading-ultra text-dark m-0 p-0 text-center uppercase leading-[0.75] select-none"
+                    className="heading-ultra text-dark m-0 p-0 text-center uppercase leading-[1.75] select-none"
                     style={{ 
-                        fontSize: 'max(3rem, min(14.5vw, 250px))',
-                        transform: 'scaleX(0.85)',
+                        fontSize: 'max(6rem, min(44.5vw, 490px))',
+                        transform: 'scaleX(1.00)',
                         letterSpacing: '-0.035em'
                     }}
                 >
@@ -73,7 +73,7 @@ export default function Footer() {
 
             {/* Very Bottom Banner */}
             <div className="relative mt-8 md:mt-16 w-full flex justify-between items-center px-4 md:px-10 text-[11px] md:text-[12px] font-medium opacity-70" style={{ fontFamily: 'Inter, sans-serif' }}>
-                <p>©{new Date().getFullYear()} Anshum Dev</p>
+                <h1>©{new Date().getFullYear()} Anshum Dev</h1>
                 <p>From India with love ❤️</p>
             </div>
         </footer>

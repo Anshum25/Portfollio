@@ -23,32 +23,22 @@ export default function PortfolioScroll({ projects }) {
             <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden pointer-events-none z-10">
                 {projects.map((proj, i) => {
                     // Mapped scroll values for crossfading titles
-                    const startFadeIn = (i - 0.2) / projects.length
-                    const fullOpacityStart = i / projects.length
-                    const fullOpacityEnd = (i + 0.7) / projects.length
-                    const endFadeOut = (i + 1) / projects.length
+                    const startFadeIn = (i - 0.2) / projects.length;
+                    const fullOpacityStart = i / projects.length;
+                    const fullOpacityEnd = (i + 0.8) / projects.length;
+                    const endFadeOut = (i + 1) / projects.length;
 
                     const opacity = useTransform(
                         scrollYProgress,
-                        [
-                            Math.max(0, startFadeIn), 
-                            Math.max(0, fullOpacityStart), 
-                            Math.min(1, fullOpacityEnd), 
-                            Math.min(1, endFadeOut)
-                        ],
+                        [startFadeIn, fullOpacityStart, fullOpacityEnd, endFadeOut],
                         [0, 1, 1, 0]
-                    )
+                    );
 
                     const y = useTransform(
                         scrollYProgress,
-                        [
-                            Math.max(0, startFadeIn), 
-                            Math.max(0, fullOpacityStart), 
-                            Math.min(1, fullOpacityEnd), 
-                            Math.min(1, endFadeOut)
-                        ],
-                        [50, 0, 0, -50]
-                    )
+                        [startFadeIn, fullOpacityStart, fullOpacityEnd, endFadeOut],
+                        [100, 0, 0, -100]
+                    );
 
                     return (
                        <motion.div
@@ -108,20 +98,18 @@ export default function PortfolioScroll({ projects }) {
   <Link
     to="/portfolio"
     className="
+      nav-link
       inline-flex items-center justify-center
-      px-7 py-3
-      md:px-9 md:py-3.5
-      mt-14 md:mt-16
-      text-[12px] md:text-[13px]
-      uppercase tracking-[0.18em]
-      bg-white text-black
-      border border-white
-      rounded-md
-      transition-all duration-300
-      hover:bg-transparent hover:text-white
+      mt-4 md:mt-4
+      text-[32px] md:text-[33px]
+      uppercase tracking-[0.018em]
+      text-white/100 hover:text-white
+      transition-colors duration-300
     "
+    style={{ fontFamily: "Inter, sans-serif" }}
   >
-    SEE PROJECT
+      <h1 className="link-text">➾</h1>
+      <h1 className="link-text-hover">➾</h1>
   </Link>
 </div>
 </motion.div>

@@ -271,32 +271,27 @@ export default function Home() {
             <PortfolioScroll projects={portfolioProjects} />
 
             {/* See All Portfolio Banner */}
-            <section className="min-h-[70vh] py-24 md:py-32 px-6 md:px-10 bg-dark flex flex-col justify-center w-full relative z-10" style={{ marginTop: '-1px' }}>
-                <div className="max-w-[1400px] mx-auto w-full pt-10">
-                    <Link to="/portfolio" className="block w-full group">
+            <section className="min-h-[70vh] py-24 md:py-32 px-6 md:px-10 bg-dark flex flex-col justify-center items-center w-full relative z-10" style={{ marginTop: '-1px' }}>
+                <div className="max-w-[1400px] mx-auto w-full pt-10 flex justify-center">
+                    <Link to="/portfolio" className="block w-fit group">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true, margin: '-100px' }}
                             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                            className="bg-white rounded-[20px] md:rounded-[40px] w-full py-24 md:py-48 flex items-center justify-center relative transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] overflow-hidden"
+                            className="bg-white rounded-[20px] w-full max-w-[1240px] h-[450px] md:h-[260px] flex items-center justify-center relative transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] overflow-hidden mx-auto"
                             style={{ cursor: 'pointer' }}
                             onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(0.98)' }}
                             onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)' }}
                         >
-                            <div className="relative">
-                                <h2 
-                                    className="heading-ultra text-[clamp(6rem,16vw,22rem)] text-dark leading-[0.8] tracking-tighter uppercase m-0 p-0 text-center transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]"
-                                >
-                                    See all
-                                </h2>
-                                <span 
-                                    className="absolute top-[-20%] right-[-15%] md:right-[-10%] font-script text-coral text-[clamp(2.5rem,6vw,6rem)] italic transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:rotate-[12deg] group-hover:scale-110" 
-                                    style={{ fontFamily: "'Tentang Nanti One', cursive", transform: 'rotate(-5deg)' }}
-                                >
-                                    (05)
-                                </span>
-                            </div>
+                            <div className="nav-link flex flex-col items-center justify-center w-full h-full relative">
+                                <div className="link-text flex items-start justify-center relative heading-ultra-center text-[clamp(6rem,16vw,20rem)] text-dark leading-[0.8] tracking-tighter uppercase whitespace-nowrap">
+                                SEE ALL
+                                </div>
+                                <div className="link-text-hover flex items-start justify-center relative heading-ultra-center text-[clamp(6rem,16vw,20rem)] text-dark leading-[0.8] tracking-tighter uppercase w-full absolute top-[100%] whitespace-nowrap">
+                                    SEE ALL
+                                  </div>
+                                  </div>
                         </motion.div>
                     </Link>
                 </div>
