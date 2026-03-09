@@ -213,37 +213,55 @@ export default function Home() {
 
             <div className="relative z-10 bg-beige">
             {/* I BUILD WEBSITES Section */}
-            <section className="min-h-screen py-24 md:py-40 px-6 md:px-10 bg-beige flex flex-col justify-center w-full">
-                <div className="max-w-6xl mx-auto w-full">
-                    <motion.div
-                        initial={{ opacity: 0, y: 60 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: '-100px' }}
-                        transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                    >
-                        <h2 className="heading-ultra text-[clamp(2.5rem,8vw,8rem)] text-dark mb-8">
-                            I build websites<br />
-                            <span className="text-dark/40">For expertise-led</span><br />
-                            <span className="text-dark/40">businesses</span>
-                        </h2>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Video Section - Coming Soon */}
-            <section className="min-h-screen px-6 md:px-10 pb-24 md:pb-40 bg-beige flex flex-col justify-center w-full">
-                <div className="max-w-6xl mx-auto w-full">
+            <section className="min-h-screen py-24 md:py-40 px-6 md:px-10 flex flex-col justify-center items-center w-full relative z-10 transition-colors">
+                <div className="max-w-[1200px] mx-auto w-full flex flex-col items-center">
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: '-100px' }}
-                        transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+                        transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+                        className="flex flex-col items-center text-center w-full"
                     >
-                       
-                        <div className="flex justify-between items-center mt-4">
-                            <p className="text-[13px] opacity-50" style={{ fontFamily: 'Inter, sans-serif' }}>
-                                ↗ Showreel 2025
-                            </p>
+                        <p className="text-[14px] uppercase tracking-[0.05em] mb-12 md:mb-16 font-medium text-dark/80" style={{ fontFamily: 'Inter, sans-serif' }}>
+                            What I do
+                        </p>
+                        
+                        <h2 className="heading-ultra text-[clamp(2.5rem,7vw,7.5rem)] leading-[0.9] text-dark mb-16 md:mb-24 w-full uppercase tracking-tight">
+                            I build websites for expertise-led companies that make their value undeniable and <span className="text-coral" style={{ fontFamily: "'Tentang Nanti One', cursive", fontSize: '1.2em', display: 'inline-block', transform: 'rotate(-5deg)', textTransform: 'none', letterSpacing: 'normal' }}>"yes"</span> inevitable.
+                        </h2>
+                        
+                        <div className="relative mt-4 md:mt-8 flex justify-center w-full max-w-[450px]">
+                            {/* Hand-drawn Arrow and Text / Desktop Left */}
+                            <div className="absolute hidden md:flex flex-col items-center z-10" style={{ left: '-200px', top: '15%' }}>
+                                <p className="text-[20px] text-dark text-center leading-tight mb-2" style={{ fontFamily: "'Tentang Nanti One', cursive", transform: 'rotate(-5deg)' }}>
+                                    Watch this to see<br/>how I can help
+                                </p>
+                                <svg width="50" height="40" viewBox="0 0 50 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-16 mt-2" style={{ transform: 'rotate(15deg)' }}>
+                                    <path d="M5 5 C 20 20, 30 30, 40 37" stroke="#1A1A1A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                    <path d="M 30 25 L 43 39 L 28 39" stroke="#1A1A1A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                            </div>
+                            
+                            {/* Hand-drawn Arrow and Text / Mobile Top */}
+                            <div className="absolute flex md:hidden flex-col items-center z-10" style={{ top: '-100px', right: '5%' }}>
+                                <p className="text-[18px] text-dark text-center leading-tight mb-2" style={{ fontFamily: "'Tentang Nanti One', cursive", transform: 'rotate(-8deg)' }}>
+                                    Watch this to see<br/>how I can help
+                                </p>
+                                <svg width="30" height="40" viewBox="0 0 30 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-8" style={{ transform: 'rotate(70deg)' }}>
+                                    <path d="M5 5 C 15 20, 20 25, 25 35" stroke="#1A1A1A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                    <path d="M 12 25 L 25 35 L 28 22" stroke="#1A1A1A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                            </div>
+
+                            {/* Video Thumbnail */}
+                            <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-[#2a2a2a] shadow-lg">
+                                <img src="/images/about-personal.png" alt="Showreel Thumbnail" className="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-700" />
+                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                    <div className="bg-[#1a1a1a]/90 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/5 shadow-2xl">
+                                        <span className="text-[#f5f5f5]/90 text-[11px] uppercase tracking-[0.15em] font-medium" style={{ fontFamily: 'Inter, sans-serif' }}>Coming Soon</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </motion.div>
                 </div>
@@ -252,48 +270,35 @@ export default function Home() {
             {/* Portfolio Projects - Sticky Scroll Effect */}
             <PortfolioScroll projects={portfolioProjects} />
 
-            {/* Portfolio Thumbnails Preview */}
-            <section className="min-h-screen py-16 md:py-24 px-6 md:px-10 bg-beige flex flex-col justify-center w-full">
-                <div className="max-w-7xl mx-auto w-full">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-                        <div className="flex items-end gap-3 md:gap-5 overflow-x-auto pb-2">
-                            {portfolioProjects.map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.12, ease: [0.76, 0, 0.24, 1] }}
-                                    className="group flex-shrink-0"
-                                >
-                                    <Link to="/portfolio" className="block">
-                                        <div className="relative overflow-hidden rounded-lg portfolio-card w-[260px] md:w-[320px]">
-                                            <img
-                                                src={item.image}
-                                                alt={item.title}
-                                                className="w-full aspect-[4/3] object-cover"
-                                            />
-                                            {item.isNew && (
-                                                <span
-                                                    className="absolute top-3 left-3 font-script text-coral text-base italic bg-white/90 px-2.5 py-0.5 rounded-sm"
-                                                    style={{ fontFamily: "'Tentang Nanti One', cursive" }}
-                                                >
-                                                    NEW
-                                                </span>
-                                            )}
-                                        </div>
-                                    </Link>
-                                </motion.div>
-                            ))}
-                        </div>
-                        <Link
-                            to="/portfolio"
-                            className="text-[13px] font-medium underline underline-offset-4 hover:opacity-50 transition-opacity flex-shrink-0"
-                            style={{ fontFamily: 'Inter, sans-serif' }}
+            {/* See All Portfolio Banner */}
+            <section className="min-h-[70vh] py-24 md:py-32 px-6 md:px-10 bg-dark flex flex-col justify-center w-full relative z-10" style={{ marginTop: '-1px' }}>
+                <div className="max-w-[1400px] mx-auto w-full pt-10">
+                    <Link to="/portfolio" className="block w-full group">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true, margin: '-100px' }}
+                            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+                            className="bg-white rounded-[20px] md:rounded-[40px] w-full py-24 md:py-48 flex items-center justify-center relative transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] overflow-hidden"
+                            style={{ cursor: 'pointer' }}
+                            onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(0.98)' }}
+                            onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)' }}
                         >
-                            See all (05)
-                        </Link>
-                    </div>
+                            <div className="relative">
+                                <h2 
+                                    className="heading-ultra text-[clamp(6rem,16vw,22rem)] text-dark leading-[0.8] tracking-tighter uppercase m-0 p-0 text-center transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]"
+                                >
+                                    See all
+                                </h2>
+                                <span 
+                                    className="absolute top-[-20%] right-[-15%] md:right-[-10%] font-script text-coral text-[clamp(2.5rem,6vw,6rem)] italic transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:rotate-[12deg] group-hover:scale-110" 
+                                    style={{ fontFamily: "'Tentang Nanti One', cursive", transform: 'rotate(-5deg)' }}
+                                >
+                                    (05)
+                                </span>
+                            </div>
+                        </motion.div>
+                    </Link>
                 </div>
             </section>
 
