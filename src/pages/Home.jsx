@@ -131,36 +131,56 @@ export default function Home() {
                     >
                         <div className="w-full px-6 md:px-16 pt-16">
 
-  {/* LINE 1 */}
-  <h1 className="heading-ultra text-dark text-[clamp(21rem,26vw,21rem)] leading-[1.15] w-full">
-    <span className="flex justify-between w-full">
-      <span>BUILDING   INTELLIGENT</span>
-      <span></span>
-     
-    </span>
+  {/* LINE 1: BUILDING */}
+  <h1 className="heading-ultra text-dark text-[clamp(5rem,20vw,21rem)] leading-[0.85] w-full text-center md:text-left m-0 p-0">
+    BUILDING
   </h1>
 
-  {/* LINE 2 */}
-  <div className="w-full flex justify-between items-end mt-2 md:mt-0 relative z-10">
-    <h1 className="heading-ultra text-dark text-[clamp(15rem,12vw,15rem)] leading-[0.85] m-0 p-0 text-left flex flex-col">
-      <span>SYSTEMS THAT</span>
-      <span>SCALE</span>
+  {/* LINE 2: INTELLIGENT */}
+  <div className="w-full relative z-10 mt-2 md:mt-4">
+    <h1 className="heading-ultra text-dark text-[clamp(3.5rem,13.5vw,15rem)] leading-[0.85] m-0 p-0 text-center md:text-left">
+      INTELLIGENT
+    </h1>
+    
+    {/* Speech Bubble / Hi I'm Anshum! - Overlapping INTELLIGENT on desktop */}
+    <motion.div 
+        initial={{ opacity: 0, scale: 1.5, rotate: -15 }}
+        animate={{ opacity: 1, scale: 1, rotate: 10 }}
+        transition={{ duration: 0.5, delay: 0.7, type: "spring" }}
+        className="absolute top-[10%] right-[10%] md:top-[10%] md:right-[5%] lg:right-[15%] text-coral text-[clamp(2.5rem,6vw,4rem)] md:text-[64px] px-2 py-1 font-bold pointer-events-none z-30"
+        style={{ fontFamily: "'Tentang Nanti One', cursive", lineHeight: '1.2' }}
+    >
+        Hi! I'm<br/>Anshum!
+    </motion.div>
+  </div>
+
+  {/* LINE 3: SYSTEMS THAT */}
+  <div className="w-full relative z-10 mt-2 md:mt-4">
+    <h1 className="heading-ultra text-dark text-[clamp(3.5rem,13vw,14rem)] leading-[0.85] m-0 p-0 text-center md:text-left">
+      SYSTEMS THAT
+    </h1>
+  </div>
+
+  {/* LINE 4: SCALE + YES! */}
+  <div className="w-full flex justify-center md:justify-between items-end mt-2 md:mt-4 relative z-10">
+    <h1 className="heading-ultra text-dark text-[clamp(5rem,20vw,21rem)] leading-[0.85] m-0 p-0 text-center md:text-left">
+      SCALE
     </h1>
 
     {/* YES */}
     <span
-      className="text-coral text-[clamp(15rem,14vw,20rem)] absolute md:relative right-[5%] bottom-[20%] md:bottom-[10%]"
+      className="text-coral text-[clamp(6rem,14vw,18rem)] absolute right-[5%] md:relative md:right-0 bottom-[10%] md:bottom-[-20px] pointer-events-none"
       style={{
         fontFamily: "'Tentang Nanti One', cursive",
         transform: "rotate(-8deg)",
         display: "inline-block",
-        zIndex: 5
+        zIndex: 5,
+        lineHeight: '0.8'
       }}
     >
       "YES!"
     </span>
   </div>
-
 </div>
                     </motion.div>
                 </div>
@@ -186,17 +206,6 @@ export default function Home() {
                                 WebkitMaskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
                             }}
                         />
-
-                        {/* Speech Bubble: "I'm here!" */}
-                        <motion.div 
-                            initial={{ opacity: 0, scale: 1.5, rotate: -15 }}
-                            animate={{ opacity: 1, scale: 1, rotate: 10 }}
-                            transition={{ duration: 0.5, delay: 0.7, type: "spring" }}
-                            className="absolute top-[20%] left-[70%] md:right-[-20%] text-coral text-[12px] md:text-[64px] px-4 py-2 font-bold "
-                            style={{ fontFamily: "'Tentang Nanti One', cursive" }}
-                        >
-                            Hi! I'm Anshum!
-                        </motion.div>
                     </motion.div>
                 </motion.div>
 
@@ -279,16 +288,16 @@ export default function Home() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true, margin: '-100px' }}
                             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                            className="bg-white rounded-[20px] w-full max-w-[1240px] h-[450px] md:h-[260px] flex items-center justify-center relative transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] overflow-hidden mx-auto"
+                            className="bg-white rounded-[20px] w-full max-w-[1240px] h-[120px] md:h-[260px] flex items-center justify-center relative transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] overflow-hidden mx-auto"
                             style={{ cursor: 'pointer' }}
                             onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(0.98)' }}
                             onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)' }}
                         >
                             <div className="nav-link flex flex-col items-center justify-center w-full h-full relative">
-                                <div className="link-text flex items-start justify-center relative heading-ultra-center text-[clamp(6rem,16vw,20rem)] text-dark leading-[0.8] tracking-tighter uppercase whitespace-nowrap">
-                                SEE ALL
+                                <div className="link-text flex items-start justify-center relative heading-ultra-center text-[clamp(4rem,16vw,20rem)] text-dark leading-[0.8] tracking-tighter uppercase whitespace-nowrap">
+                                 SEE ALL
                                 </div>
-                                <div className="link-text-hover flex items-start justify-center relative heading-ultra-center text-[clamp(6rem,16vw,20rem)] text-dark leading-[0.8] tracking-tighter uppercase w-full absolute top-[100%] whitespace-nowrap">
+                                <div className="link-text-hover flex items-start justify-center relative heading-ultra-center text-[clamp(4rem,16vw,20rem)] text-dark leading-[0.8] tracking-tighter uppercase w-full absolute top-[100%] whitespace-nowrap">
                                     SEE ALL
                                   </div>
                                   </div>

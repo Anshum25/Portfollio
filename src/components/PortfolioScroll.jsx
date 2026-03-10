@@ -75,7 +75,7 @@ export default function PortfolioScroll({ projects }) {
     <h2
       className="heading-ultra text-white uppercase leading-[1.22] tracking-[-0.04em]"
       style={{
-        fontSize: "clamp(5rem, 14vw, 13rem)"
+        fontSize: "clamp(3.5rem, 10vw, 13rem)"
       }}
     >
       {proj.title}

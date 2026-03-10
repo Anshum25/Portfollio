@@ -58,11 +58,11 @@ export default function Footer() {
             </div>
 
             {/* Huge Name at bottom */}
-            <div className="mt-20 md:mt-32 w-full flex justify-center items-end px-2 md:px-0">
+            <div className="mt-20 md:mt-32 w-full flex justify-center items-center px-4 md:px-0 overflow-hidden">
                 <h1 
-                    className="heading-ultra text-dark m-0 p-0 text-center uppercase leading-[1.75] select-none"
+                    className="heading-ultra text-dark m-0 p-0 text-center uppercase leading-[1.2] md:leading-[1.75] select-none whitespace-nowrap"
                     style={{ 
-                        fontSize: 'max(6rem, min(44.5vw, 490px))',
+                        fontSize: 'clamp(3.5rem, 15vw, 490px)',
                         transform: 'scaleX(1.00)',
                         letterSpacing: '-0.035em'
                     }}
